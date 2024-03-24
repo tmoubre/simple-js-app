@@ -1,22 +1,6 @@
-alert('Hello World!')
+let pokemonList = [
+  {name: 'Charmander', type:'grass', height: 6},
+  {Name: 'Venusar', type: ['grass', 'poison'], height: 2},
+  {name: 'Ivysaur', type: ['grass','poison'],  height: 1}
+];
 
-// let myName='Bob';
-// document.write(myName);
-
-// myName='John Doe';
-// document.write(myName);
-
-// let simpleAddition=2+2;
-// document.write(simpleAddition);
-
-// let size=100;
-// let doubleSize=size*2;
-// document.write(doubleSize);
-
-// let size =100;
-// let doubleSize=size*2;
-// let minSize=(doubleSize*2)-(size/2);
-// document.write(minSize);
-
-let favoriteFood='English Cuisine';
-document.write(favoriteFood);
