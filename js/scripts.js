@@ -7,7 +7,7 @@ let pokemonList = [
 
 for (let i = 0; i < pokemonList.length; i++) {
 
-  if (pokemonList[i].height == 6) {
+  if (pokemonList[i].height >= 6) {
     //loop to determine the size and mae of the pokemon
     document.write('<p>' + pokemonList[i].name + ' /'+' Height:' + pokemonList[i].height + ' - wow that is big! </p>')
   } else {
