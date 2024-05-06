@@ -1,19 +1,44 @@
+let pokemonrepository = (function(){
 let pokemonList = [
   //pokemon attributes
   { name: 'Charmander', type: 'grass', height: 6 },
   { name: 'Veusar',     type: ['grass', 'poison'], height: 2 },
   { name: 'Ivysaur',    type: ['grass', 'poison'], height: 1 }
 ];
-
-for (let i = 0; i < pokemonList.length; i++) {
-
-  if (pokemonList[i].height >= 6) {
-    //loop to determine the size and mae of the pokemon
-    document.write('<p>' + pokemonList[i].name + ' /'+' Height:' + pokemonList[i].height + ' - wow that is big! </p>')
-  } else {
-    document.write('<p>' + pokemonList[i].name + ' /' + ' Height:' + pokemonList[i].height + ' </p>')
+return{
+  //adds to the list
+  add: function(pokemon){
+ pokemonList.push(pokemon);
+  },
+  getAll: function(){
+    //Displays the list
+    return pokemonList;
   }
 }
+})();
+
+
+
+// for (let i = 0; i < pokemonList.length; i++) {
+
+//   if (pokemonList[i].height >= 6) {
+//     //loop to determine the size and mae of the pokemon
+//     document.write('<p>' + pokemonList[i].name + ' /'+' Height:' + pokemonList[i].height + ' - wow that is big! </p>')
+//   } else {
+//     document.write('<p>' + pokemonList[i].name + ' /' + ' Height:' + pokemonList[i].height + ' </p>')
+//   }
+
+console.log(pokemonrepository.getAll());
+pokemonrepository.add({name: 'Pikachu', type:'Mouse', height:'1.4'});
+console.log(pokemonrepository.getAll());
+pokemonrepository.getAll().forEach(logToConsole);
+function logToConsole(item) {
+  //displays the array
+  console.log(item);
+}
+
+  
+};
 
 // function subtract (number1, number2){
 // if (divisor ===0){
