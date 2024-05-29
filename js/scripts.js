@@ -1,24 +1,51 @@
-let pokemonrepository = (function(){
-let pokemonList = [
-  //pokemon attributes
-  { name: 'Charmander', type: 'grass', height: 6 },
-  { name: 'Veusar',     type: ['grass', 'poison'], height: 2 },
-  { name: 'Ivysaur',    type: ['grass', 'poison'], height: 1 }
-];
-return{
-  //adds to the list
-  add: function(pokemon){
- pokemonList.push(pokemon);
-  },
-  getAll: function(){
+let pokemonrepository = (function () {
+  let pokemonList = [
+    //pokemon attributes
+    { name: 'Charmander', type: 'grass', height: 6 },
+    { name: 'Veusar', type: ['grass', 'poison'], height: 2 },
+    { name: 'Ivysaur', type: ['grass', 'poison'], height: 1 }
+  ];
+  return {
+    //adds to the list
+    add: function (pokemon) {
+      pokemonList.push(pokemon);
+    },
+    getAll: function () {
     //Displays the list
-    return pokemonList;
+      return pokemonList;
+      
+    //add array to an list 
+    },
+    addListItem: function (pokemon) {
+      let repository = document.querySelector(".pokemon-list");
+      let listpokemon = document.createElement("li");
+      let button = document.createElement("button");
+      button.innerText = pokemon.name;
+      button.classList.add("button-class");
+      listpokemon.appendChild(button);
+      repository.appendChild(listpokemon);
+     
+    //Gets the pokemon names displayed on the buttons 
+    let button_clicked = document.querySelector('button');
+    for (let i=0; i<button_clicked.length; i++)
+    button_clicked[i].addEventListener('click', function (){
+      console.log(button_clicked[i])
+    })
+    }
   }
-}
+
 })();
+//adds a new pokemon and gets the pokemon from the array and logs to console
+pokemonrepository.add({ name: 'Pikachu', type: 'Mouse', height: '1.4' });
+console.log(pokemonrepository.getAll());
+pokemonrepository.getAll().forEach(function (pokemon) {
+  pokemonrepository.addListItem(pokemon);
+});
 
-
-
+// function logToConsole(item) {
+//   //displays the array
+//   console.log(item);
+// }
 // for (let i = 0; i < pokemonList.length; i++) {
 
 //   if (pokemonList[i].height >= 6) {
@@ -27,51 +54,12 @@ return{
 //   } else {
 //     document.write('<p>' + pokemonList[i].name + ' /' + ' Height:' + pokemonList[i].height + ' </p>')
 //   }
-
-console.log(pokemonrepository.getAll());
-pokemonrepository.add({name: 'Pikachu', type:'Mouse', height:'1.4'});
-console.log(pokemonrepository.getAll());
-pokemonrepository.getAll().forEach(logToConsole);
-function logToConsole(item) {
-  //displays the array
-  console.log(item);
-}
-
-  
-};
-
-// function subtract (number1, number2){
-// if (divisor ===0){
-//   return "You are trying to divide by zero."
-// }else{
-//     let result=dividend/divisor;
-//     return result;
+// return {
+//   //adds to the list
+//   add: function (pokemon) {
+//     pokemonList.push(pokemon);
+//   },
+//   getAll: function () {
+//     //Displays the list
+//     return pokemonList;
 //   }
-
-// return number1 - number2;
-// }
-// let result = subtract(4,2)
-// console.log(result);
-// // console.log(divide(7,0));
-// // console.log(divide(1,4));
-// // console.log(divide(12,-3));
-
-// let add=function(person1,person2){
-//   return  person1+person2
-
-// };
-// add(23,23);
-
-
-// let addtwo = [p1,p2];
-// function addtwo (p1,p2){
-//   return 10 + 10;
-
-// }
-// console.log (addtwo(10,10))
-
-// function add(num1,num2){
-//   return num1+num2
-// }
-// add(1,2)
-
