@@ -26,11 +26,11 @@ let pokemonrepository = (function () {
       repository.appendChild(listpokemon);
      
     //Gets the pokemon names displayed on the buttons 
-    let button_clicked = document.querySelector('button');
-    for (let i=0; i<button_clicked.length; i++)
-    button_clicked[i].addEventListener('click', function (){
-      console.log(button_clicked[i])
-    })
+      let button_clicked = document.getElementsByClassName('button-class');
+      for (let i = 0; i < button_clicked.length; i++)
+        button_clicked[i].addEventListener('click', function () {
+          console.log(button_clicked[i].innerHTML)
+        })
     }
   }
 
