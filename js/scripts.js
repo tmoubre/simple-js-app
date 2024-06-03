@@ -1,18 +1,16 @@
-let pokemonrepository = (function () {
-  let pokemonList = [
-    //pokemon attributes
-    { name: 'Charmander', type: 'grass', height: 6 },
-    { name: 'Veusar', type: ['grass', 'poison'], height: 2 },
-    { name: 'Ivysaur', type: ['grass', 'poison'], height: 1 }
-  ];
+let pokemonRepository = (function () {
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  
   return {
     //adds to the list
     add: function (pokemon) {
       pokemonList.push(pokemon);
+    
     },
     getAll: function () {
     //Displays the list
-      return pokemonList;
+      return pokemonList; 
       
     //add array to an list 
     },
@@ -24,24 +22,40 @@ let pokemonrepository = (function () {
       button.classList.add("button-class");
       listpokemon.appendChild(button);
       repository.appendChild(listpokemon);
-     
-    //Gets the pokemon names displayed on the buttons 
-      let button_clicked = document.getElementsByClassName('button-class');
-      for (let i = 0; i < button_clicked.length; i++)
-        button_clicked[i].addEventListener('click', function () {
-          console.log(button_clicked[i].innerHTML)
-        })
-    }
+
+  function loadList() {
+    return fetch(apiUrl)
+      .then(function (response) {
+      return response.json();
+    })
+      .then(function(json)  {
+      json.results.forEach(function(item){
+        let pokemon=  {
+          name: item.name,
+          detailsUrl: item.url,
+        };
+        add (pokemon);
+        console.log(pokemon);
+      });
+    })
+    .catch(function (e) {
+      console.error(e);
+    })
   }
-
+  return{
+    loadList: loadList,
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
+  }; 
+},  
+pokemonRepository.loadList().then(function()  {
+pokemonRepository.getAll().forEach(function (pokemon) {
+pokemonRepository.addListItem(pokemon);
+  });
+}
+)}
 })();
-//adds a new pokemon and gets the pokemon from the array and logs to console
-pokemonrepository.add({ name: 'Pikachu', type: 'Mouse', height: '1.4' });
-console.log(pokemonrepository.getAll());
-pokemonrepository.getAll().forEach(function (pokemon) {
-  pokemonrepository.addListItem(pokemon);
-});
-
 // function logToConsole(item) {
 //   //displays the array
 //   console.log(item);
@@ -63,3 +77,14 @@ pokemonrepository.getAll().forEach(function (pokemon) {
 //     //Displays the list
 //     return pokemonList;
 //   }
+
+    //Gets the pokemon names displayed on the buttons 
+      // let button_clicked = document.getElementsByClassName('button-class');
+      // for (let i = 0; i < button_clicked.length; i++)
+      //   button_clicked[i].addEventListener('click', function () {
+      //     console.log(button_clicked[i].innerHTML)
+      //   })
+
+      //adds a new pokemon and gets the pokemon from the array and logs to console
+// pokemonrepository.add({ name: 'Pikachu', type: 'Mouse', height: '1.4' });
+// console.log(pokemonrepository.getAll());
