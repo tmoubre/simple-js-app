@@ -15,17 +15,17 @@ let pokemonRepository = (function () {
 
     function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
-            $('#pokemonName').text(pokemon.name);
-            $('#pokemonHeight').text('Height: ' + pokemon.height);
-            $('#pokemonImage').attr('src', pokemon.imageUrl);
-            $('#pokemonModal').modal('show');
+            ('#pokemonName').text(pokemon.name);
+            ('#pokemonHeight').text('Height: ' + pokemon.height);
+            ('#pokemonImage').attr('src', pokemon.imageUrl);
+            ('#pokemonModal').modal('show');
         });
     }
 
     function addListItem(pokemon) {
-        let pokemonList = $('.pokemon-list');
-        let listItem = $('<li></li>').addClass('pokemon-info');
-        let button = $('<button></button>').text(pokemon.name).addClass('body');
+        let pokemonList = ('.pokemon-list');
+        let listItem = ('<li></li>').addClass('pokemon-info');
+        let button = ('<button></button>').text(pokemon.name).addClass('body');
 
         listItem.append(button);
         pokemonList.append(listItem);
